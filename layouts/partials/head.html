@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{ if .IsHome }}
+<link type="application/rss+xml" rel="alternate" title="{{.Site.Title}}" href="{{ "/podcast/index.xml" | absURL }}" />
+{{ end }}
+
+{{ if .IsHome }}
+<title>{{ .Site.Title }}</title>
+{{ else }}
+<title>{{ .Title }}</title>
+{{ end }}
+
+{{ template "_internal/twitter_cards.html" . }}
+
+{{ if .Site.Params.WithoutMinification }}
+{{ $style := resources.Get "sass/main.sass" | resources.ToCSS }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ else }}
+{{ $style := resources.Get "sass/main.sass" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ end }}
+
+{{ if .Site.Params.DebugCSS }}
+{{ $debug := resources.Get "css/debug.css"}}
+<link rel="stylesheet" href="{{ $debug.Permalink }}">
+{{ end}}
+
+{{ $js := resources.Get "js/navbar.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.Permalink }}"></script>
