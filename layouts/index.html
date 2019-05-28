@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<article class="media">
+    <div class="media-content">
+        <div class="content">
+            <main>
+                {{ .Content }}
+            </main>
+        </div>
+    </div>
+</article>
+
+
+{{ range first 10 .Pages }}
+{{ .Render "summary"}}
+{{ end }}
+
+{{ end }}

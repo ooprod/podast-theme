@@ -1,0 +1,54 @@
+<rss version="2.0" 
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" 
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
+    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>{{ .Site.Title }}</title>
+        <link>{{ .Site.BaseURL }}</link>
+        <language>{{ .Site.Language }}</language>
+        <copyright>{{ .Site.Copyright }}</copyright>
+        <itunes:author>{{ .Site.Params.Author }}</itunes:author>
+        <description>{{ .Site.Params.Description }}</description>
+        <itunes:type>{{ .Site.Params.Type }}</itunes:type>
+        <itunes:owner>
+            <itunes:name>{{ .Site.Params.OwnerName }}</itunes:name>
+            <itunes:email>{{ .Site.Params.OwnerEmail }}</itunes:email>
+        </itunes:owner>
+        <itunes:image href="{{ .Site.Params.Artwork | absURL }}" />
+        {{ if (isset .Site.Params "subcategory") }}
+        <itunes:category text="{{ .Site.Params.Category }}">
+            <itunes:category text="{{ .Site.Params.Subcategory }}"/>
+        </itunes:category>
+        {{ else }}
+        <itunes:category text="{{ .Site.Params.Category }}"/>
+        {{ end }}
+        <itunes:explicit>{{ .Site.Params.Explicit }}</itunes:explicit>
+
+        {{ range .Pages }}
+        <item>
+            <itunes:episodeType>{{ .Params.EpisodeType }}</itunes:episodeType>
+            <itunes:title>{{ .Title }}</itunes:title>
+            <itunes:subtitle>{{ .Summary | plainify }}</itunes:subtitle>
+            <itunes:summary>{{ `                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Summary | safeHTML }}{{ `]]>` | safeHTML }}</itunes:summary>
+            {{ if (isset .Params "Episode") }}
+            <itunes:episode>{{ .Params.Episode }}</itunes:episode>
+            {{ end }}
+            {{ if (isset .Params "Season") }}
+            <itunes:season>{{ .Params.Season }}</itunes:season>
+            {{ end }}
+            <title>{{ .Title }}</title>
+            <description>{{ `                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Content | safeHTML  }}{{ `]]>` | safeHTML }}
+            </description>
+            <content:encoded>{{ `                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Content | safeHTML }}{{ `]]>` | safeHTML }}
+            </content:encoded>
+            <enclosure url="{{ .Params.Audio }}" length="{{ .Params.AudioSize }}" type="{{ .Params.AudioType }}" />
+            <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+            <link>{{ .Permalink }}</link>
+            <guid>{{ .Params.Audio }}</guid>
+            <itunes:duration>{{ .Params.AudioDuration }}</itunes:duration>
+            <itunes:explicit>{{ .Params.Explicit }}</itunes:explicit>
+        </item>
+        {{ end }}
+
+    </channel>
+</rss>
