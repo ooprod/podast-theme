@@ -1,40 +1,56 @@
-<header>
-    <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-end">
-                    {{ range .Site.Menus.main }}
-                    <a class="navbar-item" href="{{ .URL }}">
-                        {{ .Pre }}
-                        {{ .Name }}
-                    </a>
-                    {{ end }}
+<header class="hero is-primary">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroC" class="navbar-menu">
+                    <div class="navbar-end">
+                        {{ range .Site.Menus.main }}
+                        <a class="navbar-item" href="{{ .URL }}">
+                            {{ .Pre }}
+                            {{ .Name }}
+                        </a>
+                        {{ end }}
+                    </div>
                 </div>
             </div>
-        </nav>
-        <section class="hero is-primary">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="title is-family-secondary">
-                        {{ .Site.Title }}
-                    </div>
-                    {{ if isset .Site.Params "description"}}
-                    <div class="subtitle is-family-secondary">
-                        {{ .Site.Params.Description }}
-                    </div>
-                    {{ end }}
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
 
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container">
+            <div class="title is-family-secondary">
+                {{ .Site.Title }}
+            </div>
+            {{ if isset .Site.Params "description"}}
+            <div class="subtitle is-family-secondary">
+                {{ .Site.Params.Description }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+        <nav class="tabs is-boxed">
+            <div class="container">
+                <ul>
+                    {{ if isset .Site.Params "ituneslink"}}
+                    <li>
+                        <a href="{{ .Site.Params.itunesLink}}" target="_blank" class="navbar-item">
+                            <img alt="itunes" src="images/itunes-badges/ru/apple-podcasts-listen-badge.svg" />
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+    </div>
 </header>
