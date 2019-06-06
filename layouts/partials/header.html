@@ -46,7 +46,15 @@
                     {{ if isset .Site.Params "ituneslink"}}
                     <li>
                         <a href="{{ .Site.Params.itunesLink}}" target="_blank" class="navbar-item">
-                            <img alt="itunes" src="images/itunes-badges/ru/apple-podcasts-listen-badge.svg" />
+                            <img alt="itunes" src="/images/itunes-badges/ru/apple-podcasts-listen-badge-white.svg" />
+                        </a>
+                    </li>
+                    {{ end }}
+                    {{ if isset .Site.Params "googlepodcastfeed"}}
+                    <li>
+                        <a href="https://www.google.com/podcasts?feed={{ .Site.Params.googlepodcastfeed }}"
+                            target="_blank" class="navbar-item">
+                            <img alt="google podcast" src="/images/google-badges/google_podcasts_badge_svg.svg" />
                         </a>
                     </li>
                     {{ end }}
