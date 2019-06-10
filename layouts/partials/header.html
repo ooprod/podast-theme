@@ -58,6 +58,14 @@
                         </a>
                     </li>
                     {{ end }}
+                    {{ if isset .Site.Params "yandexmusicalbum"}}
+                    <li>
+                        <a href="https://music.yandex.ru/album/{{ .Site.Params.yandexmusicalbum }}" target="_blank"
+                            class="navbar-item">
+                            <img alt="yandex music" src="/images/yandex-music-badges/yandex-music-badge.svg" />
+                        </a>
+                    </li>
+                    {{ end }}
                 </ul>
             </div>
     </div>
