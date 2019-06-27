@@ -11,6 +11,17 @@
 <title>{{ .Title }}</title>
 {{ end }}
 
+{{ if .IsHome }}
+<meta name="description" content="{{ .Site.Params.Description }}">
+{{ else }}
+<meta name="description" content="{{ .Summary }}">
+{{ end }}
+
+{{ if .Params.tags }}
+{{ $tags := delimit .Params.tags "," }}
+<meta name="keywords" content="{{ $tags }}">
+{{ end }}
+
 {{ template "_internal/twitter_cards.html" . }}
 
 {{ if .Site.Params.WithoutMinification }}
