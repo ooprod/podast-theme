@@ -5,10 +5,10 @@
 <link type="application/rss+xml" rel="alternate" title="{{.Site.Title}}" href="{{ "/podcast/index.xml" | absURL }}" />
 {{ end }}
 
-{{ if .IsHome }}
-<title>{{ .Site.Title }}</title>
-{{ else }}
+{{ if .Title }}
 <title>{{ .Title }}</title>
+{{ else }}
+<title>{{ .Site.Title }}</title>
 {{ end }}
 
 {{ if .IsHome }}

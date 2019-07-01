@@ -1,14 +1,12 @@
 {{ define "main" }}
 
-<article class="media">
+<section class="media">
     <div class="media-content">
         <div class="content">
-            <main>
-                {{ .Content }}
-            </main>
+            {{ .Content }}
         </div>
     </div>
-</article>
+</section>
 
 
 {{ range first 10 .Pages }}

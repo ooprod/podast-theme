@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang }}">
 {{- partial "head.html" . -}}
 
 <body>
     {{- partial "header.html" . -}}
-    <section class="section">
+    <main class="section">
         <div class="container content">
             {{- block "main" . }}{{- end }}
         </div>
-    </section>
+    </main>
     {{- partial "footer.html" . -}}
 </body>
 
