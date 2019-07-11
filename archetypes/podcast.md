@@ -9,7 +9,7 @@ audioSize = 0 # make a HTTP HEAD request to audio URL and check a Content-Length
 audioType = "audio/mpeg"
 audioDuration = 0 # in seconds
 date = {{ .Date }}
-video = ""
+video = "" #id only
 tags = []
 draft = true
 +++
