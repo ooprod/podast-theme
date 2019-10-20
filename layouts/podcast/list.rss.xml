@@ -23,13 +23,14 @@
         <itunes:category text="{{ .Site.Params.Category }}"/>
         {{ end }}
         <itunes:explicit>{{ .Site.Params.Explicit }}</itunes:explicit>
+        <itunes:complete>Yes</itunes:complete>
 
         {{ range .Pages }}
         <item>
             <itunes:episodeType>{{ .Params.EpisodeType }}</itunes:episodeType>
             <itunes:title>{{ .Title }}</itunes:title>
             <itunes:subtitle>{{ .Summary | plainify }}</itunes:subtitle>
-            <itunes:summary>{{ `                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Summary | safeHTML }}{{ `]]>` | safeHTML }}</itunes:summary>
+            <itunes:summary>{{ `                                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Summary | safeHTML }}{{ `]]>` | safeHTML }}</itunes:summary>
             {{ if (isset .Params "Episode") }}
             <itunes:episode>{{ .Params.Episode }}</itunes:episode>
             {{ end }}
@@ -37,9 +38,9 @@
             <itunes:season>{{ .Params.Season }}</itunes:season>
             {{ end }}
             <title>{{ .Title }}</title>
-            <description>{{ `                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Content | safeHTML  }}{{ `]]>` | safeHTML }}
+            <description>{{ `                                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Content | safeHTML  }}{{ `]]>` | safeHTML }}
             </description>
-            <content:encoded>{{ `                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Content | safeHTML }}{{ `]]>` | safeHTML }}
+            <content:encoded>{{ `                                                                                                                                                                                                                                                    <![CDATA[` | safeHTML }}{{ .Content | safeHTML }}{{ `]]>` | safeHTML }}
             </content:encoded>
             <enclosure url="{{ .Params.Audio }}" length="{{ .Params.AudioSize }}" type="{{ .Params.AudioType }}" />
             <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
